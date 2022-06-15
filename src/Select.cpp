@@ -4,7 +4,10 @@
 
 void selectByStore(int);
 void showStoreInfo(char*);
-void showHistory(int);
+void showHistory(char *);
+void showPrice();
+void showCustomerInfo();
+void showCustomerHistory();
 
 void Select() {
 	char cmd;
@@ -16,13 +19,13 @@ void Select() {
 	printf("(c) 상점의 거래내역 조회하기\n");
 	printf("(d) 손님의 거래내역 조회하기\n");
 	printf("(e) 상품 가격 비교하기\n");
+	printf("(f) 손님 정보 검색하기\n");
 
 	printf("원하는 메뉴를 입력하세요 : ");
 	scanf("%c", &cmd);
 	getchar();
 
-	
-	printf("%c\n", cmd);
+
 	switch (cmd) {
 	case ('a'):
 		printf("건물 번호를 입력하세요(1, 2, 3) : ");
@@ -35,19 +38,23 @@ void Select() {
 		showStoreInfo(name);
 		break;
 	case ('c'):
-		int id;
-		printf("조회를 원하는 상점의 id 를 입력하세요 : ");
-		scanf("%d", &id);
-		showHistory(id);
+		char stoname[20];
+		printf("조회를 원하는 상점의 이름을 입력하세요 : ");
+		scanf("%s", stoname);
+		getchar();
+		showHistory(stoname);
 		break;
 	case ('d'):
+		showCustomerHistory();
 		break;
 	case ('e'):
+		showPrice();
 		break;
 	case ('f'):
+		showCustomerInfo();
 		break;
 	default:
-		break;
+		printf("잘못된 값을 입력했습니다. 처음부터 다시 시도해주세요.\n");
 	}
 	
 
